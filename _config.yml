@@ -36,7 +36,7 @@ social:
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Geunmo Lee
   email: dlrmsah0603@gmail.com # change to your email address
-  fediverse_handle: # fill in your fediverse handle. E.g. "@username@domain.com"
+  # fediverse_handle: # fill in your fediverse handle. E.g. "@username@domain.com"
   links:
     # The first element serves as the copyright owner's link
     # change to your Twitter homepage
@@ -114,12 +114,12 @@ actions:
     url: "https://github.com/dlrmsah0603-rgb/dlrmsah0603-rgb.github.io/edit/main"
 
 comments:
-  provider: # giscus
+  provider: giscus
   giscus:
     repo: dlrmsah0603-rgb/dlrmsah0603-rgb.github.io
-    repo_id: # https://giscus.app 에서 저장소 입력 후 나오는 data-repo-id 값
+    repo_id: "R_kgDOVoOTzQ"
     category: Announcements # 또는 General
-    category_id: # giscus.app에서 생성한 카테고리 ID 값
+    category_id: "DIC_kwDOVoOTzc4DKvT8"
     mapping: pathname
     strict: 0
     input_position: bottom
