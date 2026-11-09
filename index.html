@@ -1,4 +1,267 @@
----
-layout: home
-# Index page
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>portable-heart-led - Build Your Own Glowing Heart Keychain</title>
+<meta name="description" content="Download the portable-heart-led project files to build an over-engineered LED heart keychain with 16 LEDs, an Arduino Nano and a rechargeable LiPo. Full schematic, code and step-by-step build guide for beginners.">
+<meta name="keywords" content="arduino, arduino nano, diy, electronics, keychain, kicad, led, lipo, maker, mt3608, open hardware, tp4056, led heart, diy keychain, arduino project">
+<meta name="author" content="abhxhekrathore5">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#e0245e">
+<link rel="canonical" href="https://github.com/abhxhekrathore5/portable-heart-led">
+<meta property="og:type" content="website">
+<meta property="og:title" content="portable-heart-led - Build Your Own Glowing Heart Keychain">
+<meta property="og:description" content="An over-engineered LED heart keychain: 16 LEDs, Arduino Nano and a rechargeable LiPo. Schematic, code and full build guide.">
+<meta property="og:url" content="https://github.com/abhxhekrathore5/portable-heart-led/releases">
+<meta property="og:site_name" content="portable-heart-led">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="portable-heart-led - Build Your Own Glowing Heart Keychain">
+<meta name="twitter:description" content="Download the complete LED heart keychain project: schematic, Arduino code and a full beginner-friendly build guide.">
+<style>
+  :root {
+    --ink: #1c1f26;
+    --muted: #555c6b;
+    --line: #e6e8ee;
+    --bg: #f7f8fb;
+    --card: #ffffff;
+    --accent: #e0245e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  h1 {
+    font-size: 2.05rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  h2 {
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    margin: 48px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--line);
+  }
+  h3 {
+    font-size: 1.08rem;
+    margin: 28px 0 8px;
+  }
+  p { margin: 0 0 16px; color: var(--muted); }
+  ul, ol { margin: 0 0 18px; padding-left: 22px; color: var(--muted); }
+  li { margin-bottom: 8px; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); }
+  .lead {
+    font-size: 1.08rem;
+    color: #3d4452;
+  }
+  .btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #e0245e 0%, #7a3cf0 100%);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1.02rem;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(224, 36, 94, 0.28);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: none;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(122, 60, 240, 0.32);
+  }
+  .btn-row {
+    margin: 26px 0 8px;
+    text-align: left;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 22px 0;
+    box-shadow: 0 4px 16px rgba(28, 31, 38, 0.05);
+  }
+  .steps li { margin-bottom: 14px; }
+  .specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0 8px;
+    font-size: 0.97rem;
+  }
+  .specs th, .specs td {
+    text-align: left;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .specs th {
+    width: 40%;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .note {
+    border-left: 4px solid var(--accent);
+    background: #fff5f8;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 20px 0;
+    color: #4a4f5c;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+    color: #7a8090;
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .wrap { padding: 28px 16px 60px; }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.2rem; margin-top: 38px; }
+    .btn { display: block; text-align: center; }
+    .specs th { width: 45%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>💖 portable-heart-led - Build Your Own Glowing Heart Keychain</h1>
+
+  <p class="lead">A small, bright, pocket-sized heart made of 16 LEDs. It runs on a rechargeable battery, fits on your keys, and comes with everything you need to build it yourself: the wiring diagram, the ready-made code, and a full step-by-step guide written for people who have never soldered before.</p>
+
+  <div class="btn-row">
+    <a class="btn" href="https://github.com/abhxhekrathore5/portable-heart-led/releases">⬇️ Get the Project Files</a>
+  </div>
+  <p>Visit this link to download the application.</p>
+
+  <h2>💡 What This Project Actually Is</h2>
+  <p>portable-heart-led is an open hardware project. That means the design files, the code, and the build instructions are all published so anyone can download them, look at them, change them, and build their own version.</p>
+  <p>The heart itself is a piece of electronics about the size of a coin. Sixteen small LEDs sit behind a heart-shaped front panel. A tiny Arduino Nano board controls how they light up, so the heart can pulse, fade, blink, or hold a steady glow. Power comes from a small rechargeable lithium battery, and a built-in charging chip means you never have to open the case to charge it. Just plug in a USB cable and it tops itself up.</p>
+  <p>The download package contains the complete wiring schematic, the Arduino sketch (the code that makes the LEDs animate), the circuit board design files, and a written build guide. You do not need to write a single line of code. It is already done.</p>
+
+  <h2>✨ Why People Like It</h2>
+  <ul>
+    <li><strong>Sixteen LEDs, one tiny package.</strong> Enough lights to make a real heart shape that reads clearly from across a room.</li>
+    <li><strong>Rechargeable, not disposable.</strong> A lithium battery plus a charging circuit means no hunting for coin cells.</li>
+    <li><strong>Fits on a keyring.</strong> Small, light, and sturdy enough to live in your pocket.</li>
+    <li><strong>Beginner-friendly guide.</strong> Photos, plain language, and a parts table that tells you exactly what to buy.</li>
+    <li><strong>Fully open.</strong> Change the colors, change the animation speed, change the shape. It is yours to modify.</li>
+    <li><strong>Great first electronics project.</strong> Simple enough to finish in an evening, interesting enough to teach you something.</li>
+  </ul>
+
+  <h2>📦 What Is Inside the Download</h2>
+  <p>Once you download the project files from the releases page, you will find a set of folders and documents. Here is what each one does, in plain language:</p>
+  <ul>
+    <li><strong>Schematic</strong> — a drawing that shows which wire connects to which part. Think of it as a map for the circuit.</li>
+    <li><strong>Circuit board files</strong> — the design for the small board the parts sit on. You can send these to a board manufacturer, or build on prototyping board instead.</li>
+    <li><strong>Arduino code</strong> — the animation program. You upload it to the Arduino Nano once, using free software, and it stays there.</li>
+    <li><strong>Build guide</strong> — the step-by-step document. Read this one first.</li>
+    <li><strong>Parts list</strong> — every component named, with the quantities you need.</li>
+  </ul>
+
+  <h2>🚀 Getting Started</h2>
+  <p>You do not need to install anything complicated. The whole process is a download, an unzip, and a read.</p>
+  <ol class="steps">
+    <li><strong>Go to the releases page.</strong> Visit this link to download the application: <a href="https://github.com/abhxhekrathore5/portable-heart-led/releases">https://github.com/abhxhekrathore5/portable-heart-led/releases</a></li>
+    <li><strong>Pick the newest release at the top.</strong> Releases are listed newest first, so the one at the top of the page is the current version.</li>
+    <li><strong>Download the project files.</strong> Click the download link listed under that release. Your browser will save it to your Downloads folder.</li>
+    <li><strong>Unzip the folder.</strong> Right-click the downloaded file and choose "Extract All", then pick a place you will remember, such as your Desktop.</li>
+    <li><strong>Open the build guide.</strong> Inside the extracted folder, open the build guide document. It is written to be read from top to bottom.</li>
+  </ol>
+  <div class="note">Everything runs on Windows without any special software. The only extra program you may want later is the free Arduino editor, and the build guide explains exactly when and how to get it.</div>
+
+  <h2>🔧 What You Will Need</h2>
+  <p>These are physical parts, not software. The parts list in the download names each one precisely, but here is the short version so you know what you are getting into:</p>
+  <ul>
+    <li>An Arduino Nano board (the small controller).</li>
+    <li>Sixteen LEDs in the color of your choice.</li>
+    <li>A small rechargeable lithium battery.</li>
+    <li>A charging module for that battery.</li>
+    <li>A voltage booster module, so the battery can drive all the LEDs evenly.</li>
+    <li>Resistors, a switch, and a keyring loop.</li>
+    <li>A soldering iron, solder, and a pair of wire cutters.</li>
+  </ul>
+  <p>None of these are expensive, and most are sold in small beginner packs. If you have never soldered before, buy a cheap practice board first and spend twenty minutes learning on it. That single step prevents almost every problem people run into.</p>
+
+  <h2>🧩 How the Build Goes</h2>
+  <h3>Step one: lay out the parts</h3>
+  <p>Empty the parts onto a clean, well-lit table. Match each item against the parts list and tick it off. Missing a resistor is the most common reason a build stalls halfway.</p>
+  <h3>Step two: follow the schematic</h3>
+  <p>The schematic shows the connections as lines. Follow one line at a time, from start to finish, and do not jump around. Slow and boring beats fast and confusing every time.</p>
+  <h3>Step three: upload the code</h3>
+  <p>Connect the Arduino Nano to your computer with a USB cable, open the code file from the download in the free Arduino editor, and press the upload button. The guide walks you through this with pictures.</p>
+  <h3>Step four: test before you close it up</h3>
+  <p>Power the heart on while it is still open on the table. If every LED lights up, you are done. If not, the troubleshooting section below covers the usual suspects.</p>
+  <h3>Step five: assemble the case</h3>
+  <p>Fit everything into the heart-shaped shell, attach the keyring loop, and charge it fully before first use.</p>
+
+  <h2>🔋 Using Your Heart Keychain</h2>
+  <p>Once it is built, using it is simple. Slide the small switch to turn it on and the heart begins its animation. Slide it back to turn it off and save battery. When the lights start to look dim, plug a USB cable into the charging port and leave it for an hour or two. A full charge lasts through days of normal on-and-off use.</p>
+  <p>Treat it like any small electronic device: keep it dry, avoid dropping it on hard floors, and do not leave it charging unattended for very long periods.</p>
+
+  <h2>🛠️ Troubleshooting</h2>
+  <ul>
+    <li><strong>No LEDs light up at all.</strong> Check the battery is charged and the switch is actually in the on position. Then check the battery connections — a loose wire is the usual culprit.</li>
+    <li><strong>Some LEDs light, others do not.</strong> An LED has a direction. One installed backwards will stay dark. Desolder it and flip it around.</li>
+    <li><strong>Lights are dim or flicker.</strong> The battery is probably low. Charge it fully and test again.</li>
+    <li><strong>Nothing happens when you upload code.</strong> Make sure the correct board type is selected in the editor and that the USB cable carries data, not just power. Some cables only charge.</li>
+    <li><strong>The animation runs too fast or too slow.</strong> Open the code and look for the delay numbers near the top. Larger numbers mean slower animation.</li>
+  </ul>
+
+  <h2>❓ Common Questions</h2>
+  <h3>Do I need to know how to code?</h3>
+  <p>No. The code is finished and ready to upload. You only touch it if you want to change how the heart behaves.</p>
+  <h3>Can I build it without a custom circuit board?</h3>
+  <p>Yes. The guide explains how to build the same circuit on ordinary prototyping board, which is cheaper for a one-off build.</p>
+  <h3>Is it safe for a beginner?</h3>
+  <p>Yes, with normal care. The voltages are low. The only real hazards are a hot soldering iron and the lithium battery, so read the safety notes in the build guide before starting.</p>
+  <h3>Can I sell the things I build?</h3>
+  <p>Check the license file in the download. Open hardware projects usually allow personal builds freely and have separate rules for selling.</p>
+
+  <h2>🧾 Technical Summary</h2>
+  <table class="specs">
+    <tr><th>Controller</th><td>Arduino Nano</td></tr>
+    <tr><th>Light source</th><td>16 LEDs</td></tr>
+    <tr><th>Power</th><td>Rechargeable lithium battery with onboard charging</td></tr>
+    <tr><th>Voltage handling</th><td>MT3608 boost module for steady LED brightness</td></tr>
+    <tr><th>Charging</th><td>TP4056 charging circuit, USB input</td></tr>
+    <tr><th>Design files</th><td>KiCad schematic and board layout</td></tr>
+    <tr><th>Form factor</th><td>Heart-shaped keychain</td></tr>
+    <tr><th>License</th><td>Open hardware</td></tr>
+  </table>
+
+  <h2>🤝 Contributing and Feedback</h2>
+  <p>If you build one and something does not match the guide, that is useful information. Open an issue on the repository describing what you found and what you did. Improvements to the documentation are just as welcome as improvements to the circuit. If you redesign the board or add a new animation, share it back so the next person has an easier time.</p>
+
+  <div class="btn-row">
+    <a class="btn" href="https://github.com/abhxhekrathore5/portable-heart-led/releases">⬇️ Visit this link to download the application</a>
+  </div>
+
+  <footer>
+    <p>portable-heart-led — an over-engineered LED heart keychain with 16 LEDs, an Arduino Nano and a rechargeable LiPo. Schematic, code and full build guide included. Open hardware project by abhxhekrathore5.</p>
+  </footer>
+
+</div>
+</body>
+</html>
