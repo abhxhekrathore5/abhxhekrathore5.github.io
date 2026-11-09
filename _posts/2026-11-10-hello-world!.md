@@ -1,6 +1,6 @@
 ---
 title: 블로그 시작 테스트
-date: 2026-11-09 12:34:00 +0900
+date: 2026-11-10 00:34:00 +0900
 categories: [Random Thoughts]
 tags: [1st-post]
 ---
